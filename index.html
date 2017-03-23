@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple Example LeoJS</title>
+</head>
+
+<body>
+    <div class="info">
+        <p id="name">Name</p>
+        <span>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit provident atque, hic possimus aspernatur earum fugiat dicta sint. Nihil inventore laboriosam minima odio, numquam eius assumenda, asperiores quaerat voluptates fugit.
+        </span>
+    </div>
+    <script src="lib/leojs.js"></script>
+
+    <script>
+
+        LeoJS('dom', function (leo) {
+            var el = leo.getElements('.info');
+
+            leo.insertHTML(el, 'beforeBegin', '<h1>Hello world!!!</h1>');
+
+            var fragment = leo.copyNodeInFragment(el, function (res) {
+
+                console.log('callback: ', res);
+
+            });
+
+            console.log('fragment: ', fragment);
+
+            el.appendChild(fragment);
+        });
+
+        LeoJS(function (leo) {
+            var Singleton  = leo.createSingleton();
+
+            Singleton.prototype.firstBefore = 'Cool it`s first property before create instance';
+
+            var obj1 = new Singleton();
+            var obj2 = new Singleton();
+
+            Singleton.prototype.secondAfter = 'It`s second property after create instance';
+
+            console.log(obj1, obj2);
+            console.log(obj1 === obj2); // True
+        });
+
+    </script>
+
+</body>
+
+</html>
