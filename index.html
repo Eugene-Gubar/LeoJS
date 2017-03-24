@@ -33,6 +33,10 @@
             console.log('fragment: ', fragment);
 
             el.appendChild(fragment);
+            
+            el = leo.getElements('.info', true);
+
+            leo.addClass(el, 'newClass');
         });
 
         LeoJS(function (leo) {
