@@ -52,9 +52,27 @@
             console.log(obj1, obj2);
             console.log(obj1 === obj2); // True
 
-            var arr = leo.genericMatrix(50, 50, 1, 6);
-
+            var arr = leo.genericMatrix(20, 20, 1, 6);
+            
             console.table(arr);
+
+            console.log('\n');
+            
+            var iterator = leo.createIterator();
+
+            iterator.setData({ leo: 'leo', js: 'js', hello: 'hello', boolean: true, number: 452, object: {name: 'object'} });
+
+            while(iterator.hasNext()) {
+                console.log(iterator.next());
+            }
+
+            console.log('\n');
+
+            iterator.setData([2, 'text', 7, [5, 1], {name: 'leo'}]);
+
+            while(iterator.hasNext()) {
+                console.log(iterator.next());
+            }
 
         });
 
